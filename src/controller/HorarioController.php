@@ -51,8 +51,7 @@ class HorarioController extends Controllers{
 
     private function sanitizeResponse($response){
         $tableHorarios = get_string_between($response, '<div class="TabelaHorarios">', '</div>');
-        $tableComponentesCurricular = get_string_between($response, '<div class="QuadroGradeCurricular">','</div>');
-        
+       
         $tableHorariosBody = get_string_between($tableHorarios, '<tbody>', '</tbody>');
         $tableHorariosColumns = getContents($tableHorariosBody, '<tr class', '</tr>');
         $tableHorariosRows = array();
@@ -82,7 +81,7 @@ class HorarioController extends Controllers{
             $sanitizedJson[$lengendaDia[$indexDia]] = $aulaNesteDia;
             $indexDia++;
         }
-        //echo $tableComponentesCurricular;
+        
 
         return $sanitizedJson;
     }
