@@ -18,7 +18,7 @@ final class SessionController extends Controllers{
 
 
     public function authUser(Request $req, Response $res, $args): Response{
-        
+        $this->chAuth = curl_init();
         $parsedBody = $req->getParsedBody();
         if(isset($parsedBody['email'])&&isset($parsedBody['senha'])){
             $email = $parsedBody['email'];

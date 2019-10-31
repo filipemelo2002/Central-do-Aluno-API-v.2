@@ -5,7 +5,7 @@
 namespace src\controller;
 
 use function src\getDatabaseConfigs;
-
+use Psr\Http\Message\ResponseInterface as Response;
 class Controllers{
     protected $chAuth;
     protected $cookies;
@@ -61,6 +61,9 @@ class Controllers{
         $dadosAuth  = curl_exec($this->chAuth);
         if((strlen($dadosAuth) == 134||strlen($dadosAuth) == 140)){
             return true;
+        }else if(strpos($dadosAuth,'manutenção')){
+            echo json_encode(array('message'=>'Sistema em manutenção'));
+            exit();
         }
         return false;
     }
