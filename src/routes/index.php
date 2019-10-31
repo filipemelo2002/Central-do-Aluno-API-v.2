@@ -5,6 +5,7 @@ namespace src\routes;
 
 use src\controller\FaltasController;
 use src\controller\BoletinsController;
+use src\controller\HorarioController;
 use src\controller\SessionController;
 
 use function src\getConfigs;
@@ -17,4 +18,5 @@ $app->post('/sessions', SessionController::class.':authUser');
 $app->get('/boletins',BoletinsController::class .':index');
 $app->get('/boletins/view', BoletinsController::class.':view');
 $app->get('/faltas',FaltasController::class .':index');
+$app->get('/horarios', HorarioController::class.':index');
 $app->run();
