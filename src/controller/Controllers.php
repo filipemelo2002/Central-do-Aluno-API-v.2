@@ -32,17 +32,20 @@ class Controllers{
                 "Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3",
                 "Content-Type: application/x-www-form-urlencoded",
                  "DNT: 1",
-                  "Connection: keep-alive"
+                  "Connection: keep-alive",
+                "Referer: http://www.siepe.educacao.pe.gov.br/"
                   ));
 
-         curl_setopt($set, CURLOPT_COOKIEJAR, $this->cookies);
-          curl_setopt($set, CURLOPT_COOKIEFILE,$this->cookies);
-           curl_setopt($set, CURLOPT_SSL_VERIFYPEER, false);
-           curl_setopt($set, CURLOPT_SSL_VERIFYHOST, false);
-           curl_setopt($set, CURLOPT_FOLLOWLOCATION, false);
-          curl_setopt($set, CURLOPT_RETURNTRANSFER, true);
-           curl_setopt($set, CURLOPT_CONNECTTIMEOUT, 10);
-        curl_setopt($set, CURLOPT_TIMEOUT, 20);      
+        curl_setopt($set, CURLOPT_COOKIEJAR, $this->cookies);
+        curl_setopt($set, CURLOPT_COOKIEFILE,$this->cookies);
+        curl_setopt($set, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($set, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($set, CURLOPT_FOLLOWLOCATION, false);
+        curl_setopt($set, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($set, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($set, CURLOPT_TIMEOUT, 20);
+        //curl_setopt($set, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
+        //curl_setopt($set, CURLOPT_PROXY, '207.97.174.134:1080');      
     }
     protected function authUserAtSiepe($email, $senha){
         
