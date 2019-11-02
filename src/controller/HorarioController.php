@@ -17,9 +17,12 @@ class HorarioController extends Controllers{
             $user = $this->verifyUserInDatabase($userToken[0]);
             if($user){
                 $response = $this->getHorarioData($user['email'], $user['senha']);
+                if(isset($response[ 'message'])){
+                    return $res->withStatus(400)->withJson($response);
+                }
                 return $res->withStatus(200)->withJson($response);
             }
-            return $res->withStatus(400)->withJson(array('message'=>"User avaliable"));
+            return $res->withStatus(400)->withJson(array('message'=>"User unavaliable"));
         }
         return $res->withStatus(400)->withJson(array('message'=>"User not authenticated"));
     }
@@ -60,30 +63,30 @@ class HorarioController extends Controllers{
             $tableHorariosRows[] = getContents($line, '<td>', '</td>');
         }  
         
-        
-        $sanitizedJson = array();
+        if(isset($tableHorariosRows[0])){
+            $sanitizedJson = array();
+            $rows  = count($tableHorariosRows);
+            $columns = count($tableHorariosRows[0]);
 
-        $rows  = count($tableHorariosRows);
-        $columns = count($tableHorariosRows[0]);
-
-        $indexDia=0;
-        $indexAula=0;
-
-        $lengendaDia = array('seg','ter','quar','qui','sex','sab','domi');
-        
-        while($indexDia<$columns){
-            $aulaNesteDia = array();
-            while($indexAula<$rows){
-                $aulaNesteDia[] =  $tableHorariosRows[$indexAula][$indexDia];;
-                $indexAula++;
-            }
+            $indexDia=0;
             $indexAula=0;
-            $sanitizedJson[$lengendaDia[$indexDia]] = $aulaNesteDia;
-            $indexDia++;
-        }
-        
 
-        return $sanitizedJson;
+            $lengendaDia = array('seg','ter','quar','qui','sex','sab','domi');
+                    
+            while($indexDia<$columns){
+                $aulaNesteDia = array();
+                while($indexAula<$rows){
+                    $aulaNesteDia[] =  $tableHorariosRows[$indexAula][$indexDia];;
+                    $indexAula++;
+                }
+                $indexAula=0;
+                $sanitizedJson[$lengendaDia[$indexDia]] = $aulaNesteDia;
+                $indexDia++;
+            }
+            return $sanitizedJson;
+        }
+       
+        return array('message'=>'Error getting data');
     }
    
 }
