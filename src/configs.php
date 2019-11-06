@@ -10,10 +10,10 @@ function getConfigs(): \Slim\Container {
 }
 function getDatabaseConfigs(){
     return array(
-        'host'=>'127.0.0.1',
-        'dbName'=>'centraldoaluno',
-        'user'=>'root',
-        'pass'=>'',
+        'host'=>'localhost',
+        'dbName'=>'id11484130_centraldoaluno',
+        'user'=>'id11484130_centraldoaluno',
+        'pass'=>'centraldoaluno',
     );
 }
 
