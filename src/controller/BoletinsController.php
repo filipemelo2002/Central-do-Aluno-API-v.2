@@ -51,12 +51,12 @@ class BoletinsController extends Controllers{
             if(!isset($line->indice)){
                 $return[] = array(
                     'materia'=>$line->descricao,
-                    'nota_p1'=>$line->nota_p1,
-                    'nota_p2'=>$line->nota_p2,
-                    'nota_p3'=>$line->nota_p3,
-                    'nota_p4'=>$line->nota_p4,
-                    'nota_rf'=>$line->nota_rf,
-                    'nota_rec'=>$line->nota_rec,
+                    'nota_p1'=>strval($line->nota_p1)?:"-",
+                    'nota_p2'=>strval($line->nota_p2)?: "-",
+                    'nota_p3'=>strval($line->nota_p3)?:"-",
+                    'nota_p4'=>strval($line->nota_p4)?:"-",
+                    'nota_rf'=>strval($line->nota_rf)?:"-",
+                    'nota_rec'=>strval($line->nota_rec)?:"-",
                 );
             }
 
