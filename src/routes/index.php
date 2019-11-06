@@ -20,3 +20,8 @@ $app->get('/boletins/view', BoletinsController::class.':view');
 $app->get('/faltas',FaltasController::class .':index');
 $app->get('/horarios', HorarioController::class.':index');
 $app->run();
+
+/*RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]*/
