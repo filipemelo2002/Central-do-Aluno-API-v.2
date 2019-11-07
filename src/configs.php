@@ -10,10 +10,10 @@ function getConfigs(): \Slim\Container {
 }
 function getDatabaseConfigs(){
     return array(
-        'host'=>'localhost',
-        'dbName'=>'id11484130_centraldoaluno',
-        'user'=>'id11484130_centraldoaluno',
-        'pass'=>'centraldoaluno',
+        'host'=>'sql107.epizy.com',
+        'dbName'=>'epiz_24756582_centraldoaluno',
+        'user'=>'epiz_24756582',
+        'pass'=>'Xxm@cacomagro1xx',
     );
 }
 
