@@ -44,7 +44,9 @@ final class SessionController extends Controllers{
         $configs = getDatabaseConfigs();
         $database  = new \src\model\DatabaseHandler($configs['dbName'], $configs['host'], $configs['user'], $configs['pass']);
         $userToken = hash('sha256', $email.$senha);
-        $database->cadastrarUsuario($userToken, $email, $senha);
+        if(!$database->consultarUsuarioAutenticado($userToken)){
+            $database->cadastrarUsuario($userToken, $email, $senha);
+        }
         return $userToken;
     }
 }
