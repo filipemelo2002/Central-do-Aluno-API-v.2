@@ -17,8 +17,8 @@ class DatabaseHandler{
         $table =  'users';
 
         $sql = "SELECT email, senha FROM $table WHERE userToken = '$userToken' LIMIT 1";
-
-        return $this->db->query($sql)->fetch(\PDO::FETCH_ASSOC);
+        $retorno = $this->db->query($sql)->fetch(\PDO::FETCH_ASSOC);
+        return $retorno;
     }
     function cadastrarUsuario($userToken, $email,$senha){
         $table = 'users';
