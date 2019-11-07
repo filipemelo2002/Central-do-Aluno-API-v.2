@@ -6,7 +6,7 @@ class DatabaseHandler{
     private $db;
     function __construct($dbName, $host, $user, $pass){
         try{
-            $dns = "mysql:dbname=$dbName;host=$host;port=5432"; 
+            $dns = "pgsql:dbname=$dbName;host=$host;port=5432"; 
             $this->db = new \PDO($dns, $user, $pass);
         }catch(PDOException $e){
             echo 'Connection failed: ' . $e->getMessage();
