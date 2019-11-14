@@ -10,6 +10,7 @@ class BoletinsController extends Controllers{
 
     public function view(Request $req, Response $res, $args): Response{
         $this->chAuth = curl_init();
+        $this->getProxyIps();
         $userToken = $req->getHeader('userToken'); 
         $filter = $req->getQueryParams();
         
@@ -78,6 +79,7 @@ class BoletinsController extends Controllers{
 
     public function index(Request $req, Response $res, $args): Response{
         $this->chAuth = curl_init();
+        $this->getProxyIps();
         $userToken = $req->getHeader('userToken');
         if(isset($userToken[0])){
             $user = $this->verifyUserInDatabase($userToken[0]);

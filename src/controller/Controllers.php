@@ -9,12 +9,13 @@ use Psr\Http\Message\ResponseInterface as Response;
 class Controllers{
     protected $chAuth;
     protected $cookies;
+    protected $proxies;
     protected function verifyUserInDatabase($userToken){
         $configs = getDatabaseConfigs();
         $database = new \src\model\DatabaseHandler($configs['dbName'], $configs['host'], $configs['user'], $configs['pass']);
 
         $userCredentials  = $database->consultarUsuarioAutenticado($userToken);
-
+        
         return $userCredentials;
     }
     protected function getTurmaId($boletimId){
@@ -24,6 +25,12 @@ class Controllers{
         $response = curl_exec($this->chAuth);
         
         return json_decode(json_encode(json_decode($response)[0]));
+    }
+    protected function getProxyIps(){
+        curl_setopt($this->chAuth, CURLOPT_URL, "https://www.proxy-list.download/api/v1/get?type=socks4&anon=elite");
+        curl_setopt($this->chAuth, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($this->chAuth, CURLOPT_RETURNTRANSFER, true);
+        $this->proxies = explode("\r\n",curl_exec($this->chAuth));
     }
     protected function cURL_Setup($set){
         curl_setopt($set, CURLOPT_HTTPHEADER,
@@ -44,8 +51,9 @@ class Controllers{
         curl_setopt($set, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($set, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($set, CURLOPT_TIMEOUT, 20);
-        //curl_setopt($set, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
-        //curl_setopt($set, CURLOPT_PROXY, '207.97.174.134:1080');      
+        curl_setopt($set, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
+        $index = array_rand($this->proxies,1);
+        curl_setopt($set, CURLOPT_PROXY, $this->proxies[$index]);      
     }
     protected function authUserAtSiepe($email, $senha){
         

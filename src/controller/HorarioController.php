@@ -12,6 +12,7 @@ class HorarioController extends Controllers{
 
     function index(Request $req, Response $res, $args): Response{
         $this->chAuth = curl_init();
+        $this->getProxyIps();
         $userToken = $req->getHeader('userToken'); 
         if($userToken){
             $user = $this->verifyUserInDatabase($userToken[0]);

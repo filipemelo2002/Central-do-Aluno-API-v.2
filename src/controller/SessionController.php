@@ -12,13 +12,16 @@ use function src\getDatabaseConfigs;
 final class SessionController extends Controllers{
 
     public function index(Request $req, Response $res, $args): Response{
-        
-        return $res->withJson(array('status'=>200,'message'=>'Success'));
+        $this->chAuth = curl_init();
+        $this->getProxyIps();
+        $index = array_rand($this->proxies,1);
+        return $res->withJson(array('status'=>200,'usingProxy'=>$this->proxies[$index]));
     }
 
 
     public function authUser(Request $req, Response $res, $args): Response{
         $this->chAuth = curl_init();
+        $this->getProxyIps();
         $parsedBody = $req->getParsedBody();
         if(isset($parsedBody['email'])&&isset($parsedBody['senha'])){
             $email = $parsedBody['email'];
