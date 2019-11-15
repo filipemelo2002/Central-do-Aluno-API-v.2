@@ -39,7 +39,10 @@ class Controllers{
                 "Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3",
                 "Content-Type: application/x-www-form-urlencoded",
                  "DNT: 1",
-                  "Connection: keep-alive",
+                "Sec-Fetch-Site: same-origin",
+                "Sec-Fetch-Mode: cors",
+                "Host: www.siepe.educacao.pe.gov.br",
+                "Connection: keep-alive",
                 "Referer: http://www.siepe.educacao.pe.gov.br/"
                   ));
 
