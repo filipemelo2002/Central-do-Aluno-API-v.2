@@ -41,6 +41,7 @@ class Controllers{
                  "DNT: 1",
                 "Sec-Fetch-Site: same-origin",
                 "Sec-Fetch-Mode: cors",
+                "request-type: 2",
                 "Host: www.siepe.educacao.pe.gov.br",
                 "Connection: keep-alive",
                 "Referer: http://www.siepe.educacao.pe.gov.br/"
@@ -50,7 +51,7 @@ class Controllers{
         curl_setopt($set, CURLOPT_COOKIEFILE,$this->cookies);
         curl_setopt($set, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($set, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($set, CURLOPT_FOLLOWLOCATION, false);
+        curl_setopt($set, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($set, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($set, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($set, CURLOPT_TIMEOUT, 20);
