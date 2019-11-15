@@ -10,7 +10,7 @@ class FaltasController extends Controllers{
      
     public function index(Request $req, Response $res, $args):Response{
         $this->chAuth = curl_init();
-        $this->getProxyIps();
+        //$this->getProxyIps();
         $userToken = $req->getHeader('userToken'); 
         $filter = $req->getQueryParams();
         if(isset($userToken[0])&&isset($filter['boletimId'])&&isset($filter['ano'])){
