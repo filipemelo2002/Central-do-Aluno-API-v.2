@@ -53,7 +53,7 @@ class Controllers{
         curl_setopt($set, CURLOPT_COOKIEFILE,$this->cookies);
         curl_setopt($set, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($set, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($set, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($set, CURLOPT_FOLLOWLOCATION, false);
         curl_setopt($set, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($set, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($set, CURLOPT_TIMEOUT, 20);
