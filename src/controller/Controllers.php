@@ -19,7 +19,7 @@ class Controllers{
         return $userCredentials;
     }
     protected function getTurmaId($boletimId){
-        curl_setopt($this->chAuth, CURLOPT_URL, "http://www.siepe.educacao.pe.gov.br/ws/eol/aluno/documentos/BoletimEscolar/alunoMatricula?idAlunoMatricula=$boletimId&isInterface=true&request.preventCache=");
+        curl_setopt($this->chAuth, CURLOPT_URL, "https://www.siepe.educacao.pe.gov.br/ws/eol/aluno/documentos/BoletimEscolar/alunoMatricula?idAlunoMatricula=$boletimId&isInterface=true&request.preventCache=");
         curl_setopt($this->chAuth, CURLOPT_CUSTOMREQUEST, "GET");
         $this->cURL_Setup($this->chAuth);
         $response = curl_exec($this->chAuth);
