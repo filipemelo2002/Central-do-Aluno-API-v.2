@@ -14,8 +14,8 @@ final class SessionController extends Controllers{
     public function index(Request $req, Response $res, $args): Response{
         $this->chAuth = curl_init();
         //$this->getProxyIps();
-        $index = array_rand($this->proxies,1);
-        return $res->withJson(array('status'=>200,'message'=>"working"));
+        //$index = array_rand($this->proxies,1);
+        return $res->withJson(array('status'=>200,'message'=>"last updated on 11/15/19"));
     }
 
 
