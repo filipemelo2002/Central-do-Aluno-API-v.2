@@ -63,9 +63,17 @@ class HorarioController extends Controllers{
         foreach($tableHorariosColumns as $line){
             $tableHorariosRows[] = getContents($line, '<td>', '</td>');
         }  
-        
+        $counter = 0;
         if(isset($tableHorariosRows[0])){
-           
+           $sanitizedJson = array();
+           for($i=0; $i<count($tableHorariosRows); $i++){
+                $arr = array();
+                for($j=0; $j<count($tableHorariosRows[$i]); $j++){
+                    $arr[$counter] = $tableHorariosRows[$i][$j];
+                    $counter++;
+                }
+                $sanitizedJson[] = $arr;
+           }
             return $tableHorariosRows;
         }
        
