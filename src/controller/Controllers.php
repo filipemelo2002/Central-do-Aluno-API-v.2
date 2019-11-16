@@ -63,7 +63,7 @@ class Controllers{
     }
     protected function authUserAtSiepe($email, $senha){
         
-        curl_setopt($this->chAuth, CURLOPT_URL, "http://www.siepe.educacao.pe.gov.br/GerenciadorAcessoWeb/segurancaAction.do?actionType=ajaxLogin");
+        curl_setopt($this->chAuth, CURLOPT_URL, "https://www.siepe.educacao.pe.gov.br/GerenciadorAcessoWeb/segurancaAction.do?actionType=ajaxLogin");
         curl_setopt($this->chAuth, CURLOPT_POST, true);
         curl_setopt($this->chAuth, CURLOPT_POSTFIELDS, http_build_query(
         		array(

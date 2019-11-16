@@ -46,7 +46,7 @@ class FaltasController extends Controllers{
     }
 
     private function getPercentFaltas($boletimId,$id_turma, $ano){
-        curl_setopt($this->chAuth, CURLOPT_URL, "http://www.siepe.educacao.pe.gov.br/ws/eol/aluno/documentos/BoletimEscolar/percentualFaltas?idAlunoMatricula=${boletimId}&idTurma=${id_turma}&ano=${ano}&isInterface=true&request.preventCache=");
+        curl_setopt($this->chAuth, CURLOPT_URL, "https://www.siepe.educacao.pe.gov.br/ws/eol/aluno/documentos/BoletimEscolar/percentualFaltas?idAlunoMatricula=${boletimId}&idTurma=${id_turma}&ano=${ano}&isInterface=true&request.preventCache=");
         curl_setopt($this->chAuth, CURLOPT_CUSTOMREQUEST, "GET");
         $this->cURL_Setup($this->chAuth);
         $response = curl_exec($this->chAuth);
@@ -55,7 +55,7 @@ class FaltasController extends Controllers{
     }
 
     private function getCountFaltas($boletimId,$id_turma, $ano){
-        curl_setopt($this->chAuth, CURLOPT_URL, "http://www.siepe.educacao.pe.gov.br/ws/eol/aluno/documentos/BoletimEscolar/componenteCurricular?idAlunoMatricula=$boletimId&idTurma=$id_turma&ano=$ano&isInterface=true&request.preventCache=");
+        curl_setopt($this->chAuth, CURLOPT_URL, "https://www.siepe.educacao.pe.gov.br/ws/eol/aluno/documentos/BoletimEscolar/componenteCurricular?idAlunoMatricula=$boletimId&idTurma=$id_turma&ano=$ano&isInterface=true&request.preventCache=");
         curl_setopt($this->chAuth, CURLOPT_CUSTOMREQUEST, "GET");
         $this->cURL_Setup($this->chAuth);
         $return = curl_exec($this->chAuth);

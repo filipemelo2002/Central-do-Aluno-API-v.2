@@ -65,7 +65,7 @@ class BoletinsController extends Controllers{
         return $return;
     }
     private function getBoletimData($boletimId, $turmaId, $ano){
-        curl_setopt($this->chAuth, CURLOPT_URL, "http://www.siepe.educacao.pe.gov.br/ws/eol/aluno/documentos/BoletimEscolar/componenteCurricular?idAlunoMatricula=$boletimId&idTurma=$turmaId&ano=$ano&isInterface=true&request.preventCache=");
+        curl_setopt($this->chAuth, CURLOPT_URL, "https://www.siepe.educacao.pe.gov.br/ws/eol/aluno/documentos/BoletimEscolar/componenteCurricular?idAlunoMatricula=$boletimId&idTurma=$turmaId&ano=$ano&isInterface=true&request.preventCache=");
         curl_setopt($this->chAuth, CURLOPT_CUSTOMREQUEST, "GET");
         $this->cURL_Setup($this->chAuth);
         $response = curl_exec($this->chAuth);
@@ -113,7 +113,7 @@ class BoletinsController extends Controllers{
     }
     private function getBoletinPage(){
         
-        curl_setopt($this->chAuth, CURLOPT_URL, "http://www.siepe.educacao.pe.gov.br/WebModuleBoletim/interfaceBoletimAction.do?actionType=exibirImplementacao&idAtor=1");
+        curl_setopt($this->chAuth, CURLOPT_URL, "https://www.siepe.educacao.pe.gov.br/WebModuleBoletim/interfaceBoletimAction.do?actionType=exibirImplementacao&idAtor=1");
         curl_setopt($this->chAuth, CURLOPT_CUSTOMREQUEST, "GET");
         $this->cURL_Setup($this->chAuth);
         $response = curl_exec($this->chAuth);

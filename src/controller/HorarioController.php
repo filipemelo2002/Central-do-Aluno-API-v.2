@@ -31,7 +31,7 @@ class HorarioController extends Controllers{
     private function getHorarioData($email, $senha){
         $status = $this->authUserAtSiepe($email, $senha);
         if($status){
-            curl_setopt($this->chAuth, CURLOPT_URL, "http://www.siepe.educacao.pe.gov.br/quadrodehorarios/DetalharQuadroHorarioPortal.do");
+            curl_setopt($this->chAuth, CURLOPT_URL, "https://www.siepe.educacao.pe.gov.br/quadrodehorarios/DetalharQuadroHorarioPortal.do");
             curl_setopt($this->chAuth, CURLOPT_CUSTOMREQUEST, "GET");
             $this->cURL_Setup($this->chAuth);
             $response = curl_exec($this->chAuth);
@@ -39,7 +39,7 @@ class HorarioController extends Controllers{
             $ewBase = get_string_between($response,"EW.loadController(",",");
             $ewId = get_string_between($response,"turmasQuadroDeHorario', ",")");
             
-            curl_setopt($this->chAuth, CURLOPT_URL, "http://www.siepe.educacao.pe.gov.br/quadrodehorarios/EWServlet.ew?EWBase=".$ewBase."&EWId=".$ewId."&EWAction=loadController&EWHome=turmasQuadroDeHorario");
+            curl_setopt($this->chAuth, CURLOPT_URL, "https://www.siepe.educacao.pe.gov.br/quadrodehorarios/EWServlet.ew?EWBase=".$ewBase."&EWId=".$ewId."&EWAction=loadController&EWHome=turmasQuadroDeHorario");
             curl_setopt($this->chAuth, CURLOPT_CUSTOMREQUEST, "GET");
             $this->cURL_Setup($this->chAuth);
             $response = curl_exec($this->chAuth);
