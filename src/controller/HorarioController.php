@@ -69,12 +69,12 @@ class HorarioController extends Controllers{
            for($i=0; $i<count($tableHorariosRows); $i++){
                 $arr = array();
                 for($j=0; $j<count($tableHorariosRows[$i]); $j++){
-                    $arr[strval($counter)] = $tableHorariosRows[$i][$j];
+                    $arr[$counter] = $tableHorariosRows[$i][$j];
                     $counter++;
                 }
                 $sanitizedJson[] = $arr;
            }
-            return $tableHorariosRows;
+            return $sanitizedJson;
         }
        
         return array('message'=>'Error getting data');
