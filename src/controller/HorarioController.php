@@ -66,7 +66,7 @@ class HorarioController extends Controllers{
 
         if(isset($tableHorariosRows[0])){
            
-            return array_fill_keys($tableHorariosRows,1);
+            return json_encode($tableHorariosRows, JSON_FORCE_OBJECT);;
         }
        
         return array('message'=>'Error getting data');
