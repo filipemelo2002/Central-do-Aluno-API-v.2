@@ -65,8 +65,16 @@ class HorarioController extends Controllers{
         }  
 
         if(isset($tableHorariosRows[0])){
-           
-            return json_decode(json_encode($tableHorariosRows), true);
+            $weekdays = array("seg","ter","quar","quin", "sext", "sab", "domi");
+            $sanitizedResponse = array();
+            for($i=0; $i<count($tableHorariosRows);$i++){
+                $row = array();
+                for($j=0; $j<count($tableHorariosRows[$i]); $j++){
+                    $row[$weekdays[$j]] = $tableHorariosRows[$i][$j];
+                }
+                $sanitizedResponse[] = $row;
+            }
+            return $sanitizedResponse;
         }
        
         return array('message'=>'Error getting data');
