@@ -67,7 +67,8 @@ class HorarioController extends Controllers{
         if(isset($tableHorariosRows[0])){
             $weekdays = array("seg","ter","quar","quin", "sext", "sab", "domi");
             $sanitizedResponse = array();
-           
+            $sanitizedResponse[0] = array("seg"=>"Seg", "ter"=>"Terç", "quar"=>"Qua", "quin"=>"Qui", "sext"=>"Sex","sab"=>"Sáb","domi"=>"Dom");
+            
             for($i=0; $i<count($tableHorariosRows);$i++){
                 $row = array();
                 for($j=0; $j<count($tableHorariosRows[$i]); $j++){
