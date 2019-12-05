@@ -3,6 +3,8 @@
 
 namespace src\model;
 
+use function src\getDatabaseConfigs;
+
 class SiepeHandlerModel{
     protected $chAuth;
     protected $cookies;

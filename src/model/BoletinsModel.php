@@ -5,18 +5,22 @@ namespace src\model;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\RequestInterface as Request;
 
-class BoletinModel extends SiepeHandlerModel{
+use function src\get_string_between;
+use function src\getContents;
 
-    private $chAuth;
+class BoletinsModel extends SiepeHandlerModel{
+
+    
     function __construct()
     {
-        $this->$chAuth  = curl_init();
+        $this->chAuth = curl_init();
     }
     function requestBoletinList(Request $req, Response $res, $args): Response{
         $userToken = $req->getHeader('userToken');
         if(isset($userToken[0])){
             $user = $this->verifyUserInDatabase($userToken[0]);
             if($user){
+
                 $authUser = $this->AuthenticateUser($user['email'], $user['senha']);
                 if(!($authUser)){
                     return $res->withStatus(400)->withJson(array('message'=>'User not authorized'));
@@ -42,6 +46,11 @@ class BoletinModel extends SiepeHandlerModel{
             $ano = $filter['ano'];
             $user = $this->verifyUserInDatabase($userToken[0]);
             if($user){
+
+                $authUser = $this->AuthenticateUser($user['email'], $user['senha']);
+                if(!($authUser)){
+                    return $res->withStatus(400)->withJson(array('message'=>'User not authorized'));
+                }
                 $response = $this->getBoletinData($boletimId, $ano);
                 if($response){
                     return $res->withStatus(200)->withJson($response);
@@ -91,6 +100,7 @@ class BoletinModel extends SiepeHandlerModel{
 
     private function getBoletinData($boletimId, $ano){
         $turmaId = $this->getTurmaId($boletimId);
+       
         if($turmaId){
             $response = $this->getBoletinContentData($boletimId,$turmaId->id_turma, $ano);
             $sanitized = $this->sanitizeBoletinListData($response);
