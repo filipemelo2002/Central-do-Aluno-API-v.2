@@ -10,10 +10,10 @@ function getConfigs(): \Slim\Container {
 }
 function getDatabaseConfigs(){
     return array(
-      'host'=>'ec2-54-197-238-238.compute-1.amazonaws.com',
-        'dbName'=>'d7ujai2rpota8v',
-        'user'=>'tltglxkmuphebp',
-        'pass'=>'c713ae3b4078a94e6ea8a1b46378012fd87733f6a457fc27d579c3e308eb6a7b',
+      'host'=>'sql10.freesqldatabase.com',
+        'dbName'=>'sql10315514',
+        'user'=>'sql10315514',
+        'pass'=>'xl5vJ5Bzgn',
     );
 }
 

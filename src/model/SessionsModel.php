@@ -42,7 +42,7 @@ class SessionsModel extends SiepeHandlerModel{
     private function saveUserAndReturnToken($email, $senha){
         $configs = getDatabaseConfigs();
         $database  = new \src\model\DatabaseHandler($configs['dbName'], $configs['host'], $configs['user'], $configs['pass']);
-        $userToken = hash('sha256', $email.$senha);
+        $userToken = hash('md5', $email);
         if(!$database->consultarUsuarioAutenticado($userToken)){
             $database->cadastrarUsuario($userToken, $email, $senha);
         }

@@ -1,5 +1,4 @@
 <?php
-
 namespace src\model;
 
 use Psr\Http\Message\ResponseInterface as Response;
@@ -23,6 +22,7 @@ class BoletinsModel extends SiepeHandlerModel{
 
                 $authUser = $this->AuthenticateUser($user['email'], $user['senha']);
                 if(!($authUser)){
+                    
                     return $res->withStatus(400)->withJson(array('message'=>'User not authorized'));
                 }
 
