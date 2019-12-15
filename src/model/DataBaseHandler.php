@@ -3,7 +3,7 @@
 namespace src\model;
 
 class DatabaseHandler{
-    private $db;
+    protected $db;
     function __construct($dbName, $host, $user, $pass){
         try{
             $dns = "mysql:dbname=$dbName;host=$host"; 
@@ -17,6 +17,26 @@ class DatabaseHandler{
         $table =  'users';
 
         $sql = "SELECT email, senha FROM $table WHERE userToken = '$userToken' LIMIT 1";
+        $retorno = $this->db->query($sql);
+        if($retorno){
+            return $retorno->fetch(\PDO::FETCH_ASSOC);
+        }
+        return false;
+    }
+    function authAdmin($user, $pass){
+        $table =  'admins';
+
+        $sql = "SELECT * FROM $table WHERE email = '$user' AND senha= '$pass' LIMIT 1";
+        $retorno = $this->db->query($sql);
+        if($retorno){
+            return $retorno->fetch(\PDO::FETCH_ASSOC);
+        }
+        return false;
+    }
+    function consultarAdminoAutenticado($userToken){
+        $table =  'admins';
+
+        $sql = "SELECT * FROM $table WHERE userToken = '$userToken' LIMIT 1";
         $retorno = $this->db->query($sql);
         if($retorno){
             return $retorno->fetch(\PDO::FETCH_ASSOC);
@@ -38,6 +58,16 @@ class DatabaseHandler{
         return $status;
     }
 
+    function getAllUsers(){
+        $table =  'users';
 
+        $sql = "SELECT * FROM $table";
+        $retorno = $this->db->query($sql);
+        if($retorno){
+            return $retorno->fetchAll(\PDO::FETCH_ASSOC);
+        }
+        return false;
+        
+    }
 
 }

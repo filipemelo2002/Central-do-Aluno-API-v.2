@@ -3,6 +3,7 @@
 
 namespace src\routes;
 
+use src\controller\AdminController;
 use src\controller\FaltasController;
 use src\controller\BoletinsController;
 use src\controller\HorarioController;
@@ -19,6 +20,8 @@ $app->get('/boletins',BoletinsController::class .':index');
 $app->get('/boletins/view', BoletinsController::class.':view');
 $app->get('/faltas',FaltasController::class .':index');
 $app->get('/horarios', HorarioController::class.':index');
+$app->post('/admin/login', AdminController::class.':login');
+$app->get('/admin/view', AdminController::class.':getData');
 $app->run();
 
 /*RewriteEngine On
