@@ -23,7 +23,7 @@ $app->get('/horarios', HorarioController::class.':index');
 $app->post('/admin/login', AdminController::class.':login');
 $app->get('/admin/view', AdminController::class.':getData');
 
-$app->options('/{routes:.+}', function ($request, $response, $args) {
+/*$app->options('/{routes:.+}', function ($request, $response, $args) {
     return $response;
 });
 
@@ -39,7 +39,7 @@ $app->add(function ($req, $res, $next) {
 $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function($req, $res) {
     $handler = $this->notFoundHandler; // handle using the default Slim page not found handler
     return $handler($req, $res);
-});
+});*/
 
 $app->run();
 
