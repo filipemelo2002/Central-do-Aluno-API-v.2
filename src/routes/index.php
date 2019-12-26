@@ -22,7 +22,7 @@ $app->get('/faltas',FaltasController::class .':index');
 $app->get('/horarios', HorarioController::class.':index');
 $app->post('/admin/login', AdminController::class.':login');
 $app->get('/admin/view', AdminController::class.':getData');
-
+$app->post('/admin/notify', AdminController::class.':notification');
 $app->options('/{routes:.+}', function ($request, $response, $args) {
     return $response;
 });
