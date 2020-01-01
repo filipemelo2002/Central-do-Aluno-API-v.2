@@ -11,9 +11,9 @@ function getConfigs(): \Slim\Container {
 function getDatabaseConfigs(){
     return array(
       'host'=>'sql10.freesqldatabase.com',
-        'dbName'=>'sql10316506',
-        'user'=>'sql10316506',
-        'pass'=>'N7RUET54Vm',
+        'dbName'=>'sql10317385',
+        'user'=>'sql10317385',
+        'pass'=>'TEdmaxrDME',
     );
 }
 
