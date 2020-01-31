@@ -1,6 +1,6 @@
 # API Restful Central do Aluno
 
-##Descrição
+## Descrição
 API RESTFul escrita em PHP + Slim Framework. Este sistema realiza *Webscrapping* 
 no site do [SIEPE](http://www.siepe.educacao.pe.gov.br/) (Sistema de Informações da Educação de Pernambuco) utilizando as credenciais do usuários.
 ##Arquitetura
